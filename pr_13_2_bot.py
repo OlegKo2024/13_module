@@ -19,25 +19,26 @@ dp.include_router(router)
 @router.message(Command("start"))
 async def start_com(message: Message):
     print('Привет! Я бот помогающий твоему здоровью.')
-    await message.reply('Получена команда: ' + message.text)
+    # await message.reply('Получена команда: ' + message.text)
 
 
-@router.message(F.text.in_(['Urban', 'Turman', 'Kurman']))
-async def select_messages(message: Message):
-    print('Получили ожидаемое сообщение:', message.text)
-    await message.reply('Получено кодовое сообщение: ' + message.text)
+@router.message(F.text.in_(['Urban', 'ff']))
+async def urban_messages(message: Message):
+    print('Urban message:', message.text)
+    # await message.reply('Получено кодовое сообщение: ' + message.text)
 
 
 @router.message()
 async def any_messages(message: Message):
-    print('Введите команду /start, чтобы начать общение')
-    await message.reply('Получено сообщение: ' + message.text)
+    print('Введите команду /start, чтобы начать общение.')
+    # await message.reply('Получено сообщение: ' + message.text)
 
 
 async def main():
-    print("Бот запущен...")
+    print("Updates were skipped successfully.")
     await dp.start_polling(bot, skip_updates=True)
 
 
 if __name__ == "__main__":
     asyncio.run(main())
+
