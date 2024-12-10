@@ -20,7 +20,7 @@ button2 = KeyboardButton(text='Информация')
 
 kb = ReplyKeyboardMarkup(
     keyboard=[
-        [button1, button2],  # Первый ряд
+        [button1, button2],
     ],
     resize_keyboard=True,)
 
