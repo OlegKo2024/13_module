@@ -22,7 +22,7 @@ kb = ReplyKeyboardMarkup(
     keyboard=[
         [button1, button2],  # Первый ряд
     ],
-    resize_keyboard=True, )
+    resize_keyboard=True,)
 
 
 class UserState(StatesGroup):
