@@ -4,6 +4,7 @@ from aiogram.types import Message
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
+from aiogram.types import CallbackQuery
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 import asyncio
 import dotenv
@@ -46,6 +47,13 @@ async def start_com(message: Message):
     await message.answer('Привет! Я бот помогающий твоему здоровью.', reply_markup=kb)
 
 
+# @dp.message(F.text == 'Информация')
+# async def main_menu(message: Message):
+#     await message.answer('Этот бот делает расчет необходимого кол-ва калорий. '
+#                          'Бот применяет Формулу Миффлина-Сан Жеора – это одна из последних формул расчета калорий '
+#                          'для оптимального похудения или сохранения нормального веса. Для расчета жмем "Рассчитать".')
+
+
 @dp.message(F.text == 'Рассчитать')
 async def main_menu(message: Message):
     await message.answer('Выберите опцию', reply_markup=kb_menu)
@@ -63,7 +71,7 @@ async def inst(call):
 
 
 @dp.callback_query(F.data == 'calories')
-async def set_age(call, state: FSMContext):
+async def set_age(call: CallbackQuery, state: FSMContext):
     await call.message.answer('Введите свой возраст, г: ')
     await state.set_state(UserState.age)
     await call.answer()
