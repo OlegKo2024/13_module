@@ -97,7 +97,7 @@ async def set_calories(message: Message, state: FSMContext):
     data = await state.get_data()
     calories_norm = 10 * int(data['weight']) + 6.5 * int(data['growth']) - 5 * int(data['age']) + 5
     await message.answer(f'Ваша норма калорий (кал) в сутки: {calories_norm}')
-    print(f'Ваша норма калорий (ккал) в сутки: {calories_norm}')
+    print(f'Ваша норма калорий (кал) в сутки: {calories_norm}')
     await state.clear()
 
 
